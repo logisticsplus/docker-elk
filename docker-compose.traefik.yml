@@ -22,10 +22,6 @@ services:
       - elasticsearch
 
   elasticsearch:
-    build:
-      context: elasticsearch/
-      args:
-        ELASTIC_VERSION: '8.4.1'
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,z
       - elasticsearch:/usr/share/elasticsearch/data:z
@@ -45,10 +41,6 @@ services:
       - elk
 
   logstash:
-    build:
-      context: logstash/
-      args:
-        ELASTIC_VERSION: '8.4.1'
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
@@ -66,10 +58,6 @@ services:
       - elasticsearch
 
   kibana:
-    build:
-      context: kibana/
-      args:
-        ELASTIC_VERSION: '8.4.1'
     volumes:
       - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro,Z
     environment:
